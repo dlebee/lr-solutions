@@ -35,7 +35,7 @@ If DNS is on Cloudflare, set these records to **DNS only** (grey cloud) so GitHu
 
 ## 2. Contact form API
 
-The form posts to `https://api.lr-solutions.com/contact`, a Cloudflare Worker kept in the private repo **dlebee/lr-solutions-api** (checked out locally in `worker/`, which this repo ignores). The Turnstile site key in `site/index.html` is public by design; the secret, the Resend key and the recipient addresses live only as Worker secrets.
+The form posts to `https://api.lr-solutions.com/contact`, a Cloudflare Worker kept in the private repo **dlebee/lr-solutions-api** (checked out locally in `worker/`, which this repo ignores). The Turnstile site key in `site/index.html` is public by design; the Turnstile secret and the recipient addresses live only as Worker secrets. Email goes out via Cloudflare Email Routing on `notify.lr-solutions.com` (the root domain's Microsoft 365 mail is untouched).
 
 ## Local development
 
