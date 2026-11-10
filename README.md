@@ -1,6 +1,6 @@
 # L&R Solutions — lr-solutions.com
 
-Static one-page website (GitHub Pages) plus a free contact-form API (Cloudflare Worker + Turnstile).
+Static one-page website on GitHub Pages. The contact-form API lives in a separate private repo.
 
 ```
 site/            → the website (deployed to GitHub Pages)
@@ -8,7 +8,6 @@ site/            → the website (deployed to GitHub Pages)
   brand/           brand kit page (lr-solutions.com/brand/, not indexed)
   assets/          css (tokens.css = brand tokens), js, logo SVGs
   CNAME            lr-solutions.com
-worker/          → contact form API (Cloudflare Worker)
 ```
 
 Cost: **$0**. GitHub Pages is free, Cloudflare Workers' free tier allows 100k requests a day, and Turnstile and Email Routing are free.
@@ -34,45 +33,9 @@ Cost: **$0**. GitHub Pages is free, Cloudflare Workers' free tier allows 100k re
 
 If DNS is on Cloudflare, set these records to **DNS only** (grey cloud) so GitHub can issue the HTTPS certificate.
 
-## 2. Human verification (Cloudflare Turnstile)
+## 2. Contact form API
 
-1. Cloudflare dashboard → **Turnstile → Add widget**. Hostnames: `lr-solutions.com`, `www.lr-solutions.com`, `localhost`. Mode: *Managed*.
-2. Copy the **site key** into `site/index.html` (replace `1x00000000000000000000AA` in the `cf-turnstile` div).
-3. Keep the **secret key** for step 3.
-
-## 3. Contact API (Cloudflare Worker)
-
-```bash
-cd worker
-npm install
-npx wrangler login
-npx wrangler secret put TURNSTILE_SECRET   # from step 2
-npx wrangler secret put MAIL_TO            # bruiz@lr-solutions.com
-npx wrangler secret put MAIL_CC            # david@lr-solutions.com
-npx wrangler deploy
-```
-
-`deploy` prints a URL like `https://lr-contact.<you>.workers.dev`. Put `<that URL>/contact` into `data-endpoint` on the `<form>` in `site/index.html` and push.
-
-The recipient addresses are stored only as encrypted Worker secrets. They never appear in the website, the browser, or this repo.
-
-### Email delivery: use Resend (Option B)
-
-> **lr-solutions.com mail is on Microsoft 365** (MX → outlook.com). Do **not** enable Cloudflare Email Routing on the root domain: it would replace the MX record and break incoming mail. Use Option B.
-
-**Option A: Cloudflare Email Routing (all Cloudflare, free).** Needs `lr-solutions.com` DNS on Cloudflare.
-1. Cloudflare → `lr-solutions.com` → **Email → Email Routing → Enable**.
-2. **Destination addresses:** add `bruiz@…` and `david@…`. Each person clicks the verification link sent to them.
-3. Nothing else to do. The Worker uses the `SEND_EMAIL` binding automatically.
-
-> ⚠️ Enabling Email Routing replaces the domain's **MX records** with Cloudflare's. If `@lr-solutions.com` mailboxes live at Google Workspace or Microsoft 365, enabling it on the root domain would break incoming mail. In that case, enable Email Routing on a subdomain (for example `mail.lr-solutions.com`), set `MAIL_FROM = "website@mail.lr-solutions.com"` in `wrangler.toml`, or use Option B.
-
-**Option B: Resend (free tier, 3,000 emails a month, real CC, doesn't touch MX).**
-1. Sign up at resend.com, add the domain `lr-solutions.com`, and add the DNS records it shows.
-2. `npx wrangler secret put RESEND_API_KEY`, then `npx wrangler deploy`. When this key is set the Worker uses Resend instead of Option A.
-
-### Optional: nicer API URL
-If the zone is on Cloudflare, uncomment the `routes` line in `wrangler.toml` to serve at `https://api.lr-solutions.com`, and update `data-endpoint`.
+The form posts to `https://api.lr-solutions.com/contact`, a Cloudflare Worker kept in the private repo **dlebee/lr-solutions-api** (checked out locally in `worker/`, which this repo ignores). The Turnstile site key in `site/index.html` is public by design; the secret, the Resend key and the recipient addresses live only as Worker secrets.
 
 ## Local development
 
