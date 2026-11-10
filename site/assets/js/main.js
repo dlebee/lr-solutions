@@ -9,6 +9,13 @@
   const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
   onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
 
+  // Logo / "#top" links: scroll to the very top (the sticky header itself is never "above" the viewport)
+  document.querySelectorAll('a[href="#top"]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.replaceState(null, '', location.pathname + location.search);
+  }));
+
   // Mobile nav
   const toggle = $('.nav-toggle'), links = $('#nav-links');
   toggle.addEventListener('click', () => {
