@@ -1,0 +1,7 @@
+# Copy to .dev.vars for `npm run dev` (never commit .dev.vars).
+# These are Cloudflare's always-pass Turnstile test keys.
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA
+ALLOWED_ORIGINS=http://localhost:8080
+MAIL_TO=you@example.com
+MAIL_CC=
+# RESEND_API_KEY=re_xxx

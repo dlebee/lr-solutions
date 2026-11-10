@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>L&amp;R Solutions Brand Kit</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <style>
+    .cover { background: var(--blue); color: #fff; padding: clamp(56px, 9vw, 110px) 0; }
+    .cover h1 { color: #fff; margin-bottom: .2em; }
+    .cover p { color: #DCE6FF; font-size: var(--step-1); max-width: 44ch; margin: 0; }
+    .cover .cover-logo { width: 190px; height: auto; margin-bottom: 2.2rem; }
+    .kit section { padding: clamp(48px, 7vw, 80px) 0; border-bottom: 1px solid var(--line); }
+    .kit section:last-of-type { border: 0; }
+    .kit h2 { font-size: var(--step-2); }
+    .sub { color: var(--muted); max-width: 62ch; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); margin-top: 1.5rem; }
+    .panel { border-radius: var(--radius); border: 1px solid var(--line); padding: 2rem; display: grid; place-items: center; min-height: 170px; }
+    .panel.blue { background: var(--blue); border-color: var(--blue); }
+    .panel.navy { background: var(--navy); border-color: var(--navy); }
+    .cap { font-size: .82rem; color: var(--muted); margin-top: .6rem; }
+    .cap a { color: var(--blue); font-weight: 600; }
+    .facts { display: grid; grid-template-columns: 160px 1fr; gap: .9rem 2rem; margin-top: 1.5rem; max-width: 760px; }
+    .facts dt { font-weight: 700; color: var(--muted); font-size: .9rem; }
+    .facts dd { margin: 0; }
+    @media (max-width: 600px) { .facts { grid-template-columns: 1fr; gap: .2rem; } .facts dd { margin-bottom: .9rem; } }
+    .palette { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 150px 110px; gap: 1rem; margin-top: 1.5rem; }
+    .palette > div { border-radius: var(--radius); padding: 1rem 1.2rem; display: flex; flex-direction: column; justify-content: flex-end; font-size: .85rem; border: 1px solid var(--line); }
+    .palette b { font-size: 1rem; }
+    .palette .big { grid-row: span 2; }
+    @media (max-width: 640px) { .palette { grid-template-columns: 1fr 1fr; grid-template-rows: auto; } .palette > div { min-height: 110px; } .palette .big { grid-column: span 2; grid-row: auto; min-height: 160px; } }
+    .ratio { display: flex; height: 14px; border-radius: 999px; overflow: hidden; margin-top: 1.2rem; border: 1px solid var(--line); }
+    .type-row { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; padding: 1.3rem 0; border-top: 1px solid var(--line); align-items: baseline; }
+    .type-row .cap { margin: 0; }
+    @media (max-width: 640px) { .type-row { grid-template-columns: 1fr; gap: .3rem; } }
+    .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+    @media (max-width: 700px) { .rules { grid-template-columns: 1fr; } }
+    .rules > div { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+    .rules h3 { display: flex; gap: .5rem; align-items: center; }
+    .rules ul { margin: 0; padding-left: 1.1em; color: var(--muted); }
+    .rules li { margin: .35rem 0; }
+    .yes h3::before { content: "✓"; color: var(--blue); }
+    .no h3::before { content: "✕"; color: #B91C1C; }
+    .say { display: grid; gap: .75rem; margin-top: 1.5rem; }
+    .say div { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .say span { padding: 1rem 1.2rem; border-radius: 12px; font-size: .95rem; }
+    .say .bad { background: #FEF2F2; color: #7F1D1D; text-decoration: line-through; text-decoration-color: rgba(127,29,29,.4); }
+    .say .good { background: var(--sky); color: var(--navy); font-weight: 600; }
+    @media (max-width: 600px) { .say div { grid-template-columns: 1fr; gap: .4rem; } }
+  </style>
+</head>
+<body class="kit">
+<div class="cover">
+  <div class="wrap">
+    <img src="/assets/img/logo-stacked-white.svg" alt="L&amp;R Solutions" class="cover-logo">
+    <h1>Brand kit</h1>
+    <p>How L&amp;R Solutions looks and sounds. Use it for proposals, decks, signage, social posts and anything with our name on it.</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <section>
+    <h2>The basics</h2>
+    <dl class="facts">
+      <dt>Name</dt><dd><b>L&amp;R Solutions</b>. Always a capital L, an ampersand and a capital R with no spaces, then "Solutions". Not "LR", "L and R" or "L & R". For web addresses and email: lr-solutions.com.</dd>
+      <dt>Tagline</dt><dd><b>Your kitchen, connected.</b></dd>
+      <dt>What we do</dt><dd>Sales systems, central kitchen technology and custom software for food businesses.</dd>
+      <dt>In one line</dt><dd>We design, integrate and support the systems behind your sales and your central kitchen, and build custom software when off-the-shelf won't do.</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Logo</h2>
+    <p class="sub">A serif <b>L&amp;R</b> set in DM Serif Display, with the ampersand in LR Blue to show the partnership at the heart of the company. Underneath, SOLUTIONS is set in spaced-out capitals in Plus Jakarta Sans. The serif brings a hospitality feel and the clean sans brings the technology. All files are outlined vector shapes, so they look identical everywhere, even without the fonts installed.</p>
+    <div class="grid">
+      <div><div class="panel"><img src="/assets/img/logo-stacked.svg" alt="Stacked logo" style="width:100%;max-width:170px"></div><p class="cap">Primary, stacked · <a href="/assets/img/logo-stacked.svg" download>logo-stacked.svg</a></p></div>
+      <div><div class="panel blue"><img src="/assets/img/logo-stacked-white.svg" alt="Stacked logo, white" style="width:100%;max-width:170px"></div><p class="cap">Stacked, on blue or photos · <a href="/assets/img/logo-stacked-white.svg" download>logo-stacked-white.svg</a></p></div>
+      <div><div class="panel"><img src="/assets/img/logo.svg" alt="Horizontal logo" style="width:100%;max-width:230px"></div><p class="cap">Horizontal, for headers and email signatures · <a href="/assets/img/logo.svg" download>logo.svg</a></p></div>
+      <div><div class="panel navy"><img src="/assets/img/logo-white.svg" alt="Horizontal logo, white" style="width:100%;max-width:230px"></div><p class="cap">Horizontal, white · <a href="/assets/img/logo-white.svg" download>logo-white.svg</a></p></div>
+      <div><div class="panel"><img src="/assets/img/mark.svg" alt="Ampersand icon, navy" width="88" height="88"></div><p class="cap">Icon: favicon, app, social avatar · <a href="/assets/img/mark.svg" download>mark.svg</a></p></div>
+      <div><div class="panel"><img src="/assets/img/mark-blue.svg" alt="Ampersand icon, blue" width="88" height="88"></div><p class="cap">Icon, blue · <a href="/assets/img/mark-blue.svg" download>mark-blue.svg</a></p></div>
+      <div><div class="panel blue"><img src="/assets/img/mark-white.svg" alt="Ampersand icon, white" width="88" height="88"></div><p class="cap">Icon, white · <a href="/assets/img/mark-white.svg" download>mark-white.svg</a></p></div>
+      <div><div class="panel"><img src="/assets/img/mark-mono.svg" alt="Single-colour ampersand" width="88" height="88"></div><p class="cap">One colour, for stamps and engraving · <a href="/assets/img/mark-mono.svg" download>mark-mono.svg</a></p></div>
+    </div>
+    <p class="cap" style="margin-top:1.2rem">Leave clear space of at least ¼ of the mark's width on every side. Minimum size: 24px on screen, 8mm in print.</p>
+  </section>
+
+  <section>
+    <h2>Colour</h2>
+    <p class="sub">Blue and white. White carries the page, LR Blue carries the brand, and Navy is for text. Keep it to roughly 70% white, 20% blue, 10% navy.</p>
+    <div class="palette">
+      <div class="big" style="background:#1D4ED8;color:#fff;border-color:#1D4ED8"><b>LR Blue</b>#1D4ED8 · RGB 29 78 216<br>Mark, buttons, highlights</div>
+      <div style="background:#0B1B3F;color:#fff;border-color:#0B1B3F"><b>Navy</b>#0B1B3F<br>Headings, text</div>
+      <div style="background:#FFFFFF"><b>White</b>#FFFFFF<br>Backgrounds</div>
+      <div style="background:#DBEAFE;color:#0B1B3F;border-color:#DBEAFE"><b>Sky</b>#DBEAFE<br>Tints, icon tiles</div>
+      <div style="background:#F5F8FF;color:#0B1B3F"><b>Mist</b>#F5F8FF<br>Alternate sections</div>
+    </div>
+    <div class="ratio" aria-label="Colour proportions"><span style="flex:7;background:#fff"></span><span style="flex:2;background:#1D4ED8"></span><span style="flex:1;background:#0B1B3F"></span></div>
+    <p class="cap">Supporting: Deep Blue #1E40AF (hover), Slate #5B6B8A (secondary text), Line #E3E9F5 (borders). Developers: <a href="/assets/css/tokens.css">tokens.css</a>.</p>
+  </section>
+
+  <section>
+    <h2>Typography</h2>
+    <p class="sub">Two free Google Fonts. <b>DM Serif Display</b> for the logo and big headlines brings the hospitality feel. <b>Plus Jakarta Sans</b> for everything else (subheadings, body, buttons, labels) brings the clean tech feel. Never set body text in the serif.</p>
+    <div class="type-row" style="margin-top:1.2rem"><p class="cap">Logo · DM Serif Display</p><img src="/assets/img/logo-stacked.svg" alt="" style="height:64px;width:auto"></div>
+    <div class="type-row"><p class="cap">Headline · DM Serif Display</p><span style="font-family:var(--font-display);font-size:var(--step-4);line-height:1;letter-spacing:-.01em;color:var(--navy)">Your kitchen, <span style="color:var(--blue)">connected.</span></span></div>
+    <div class="type-row"><p class="cap">Section heading · DM Serif Display</p><span style="font-family:var(--font-display);font-size:var(--step-3);line-height:1.1;letter-spacing:-.01em;color:var(--navy)">From the sale to the central kitchen, one connected system.</span></div>
+    <div class="type-row"><p class="cap">Subheading · Jakarta Bold 700</p><span style="font-size:var(--step-1);font-weight:700;color:var(--navy)">Central kitchen systems</span></div>
+    <div class="type-row"><p class="cap">Body · Jakarta Regular 400</p><span style="color:var(--muted);max-width:60ch">Every order feeds production, stock and reporting automatically. We select, configure and integrate it all, turnkey.</span></div>
+    <div class="type-row"><p class="cap">Label · Jakarta Bold 700, LR Blue</p><span class="label" style="margin:0">Central kitchen systems</span></div>
+  </section>
+
+  <section>
+    <h2>How we sound</h2>
+    <p class="sub">Technical expertise, explained simply. Be specific about systems, and always tie them to a result in sales or in the kitchen.</p>
+    <div class="say">
+      <div><span class="bad">Leverage synergistic omnichannel platforms</span><span class="good">Every order lands on one screen.</span></div>
+      <div><span class="bad">End-to-end digital transformation</span><span class="good">Today's sales set tomorrow's production plan.</span></div>
+      <div><span class="bad">The #1 restaurant tech platform</span><span class="good">Honest advice, even if it's "keep what you have."</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Do &amp; don't</h2>
+    <div class="rules">
+      <div class="yes"><h3>Do</h3><ul>
+        <li>Use lots of white space</li>
+        <li>Use LR Blue for the one main action on a page</li>
+        <li>Use the stacked logo where there's room, the horizontal one in tight spaces</li>
+        <li>Show real systems in use: POS screens, kitchen displays, production lines</li>
+      </ul></div>
+      <div class="no"><h3>Don't</h3><ul>
+        <li>Stretch, rotate or recolour the logo, or retype it in another font</li>
+        <li>Add gradients, shadows or outlines to the logo</li>
+        <li>Mix in other bright colours</li>
+        <li>Use generic stock "tech" imagery</li>
+      </ul></div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer"><div class="wrap"><span>L&amp;R Solutions brand kit · v2</span><a href="/">← Back to site</a></div></footer>
+</body>
+</html>
