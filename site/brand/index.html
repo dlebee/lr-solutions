@@ -52,9 +52,37 @@
     .say .bad { background: #FEF2F2; color: #7F1D1D; text-decoration: line-through; text-decoration-color: rgba(127,29,29,.4); }
     .say .good { background: var(--sky); color: var(--navy); font-weight: 600; }
     @media (max-width: 600px) { .say div { grid-template-columns: 1fr; gap: .4rem; } }
-      .dltable td { padding: .9rem 1rem .9rem 0; }
-    .dl a { display: inline-block; margin: .2rem .35rem .2rem 0; padding: .35em .75em; border: 1px solid var(--line); border-radius: 8px; font-size: .85rem; font-weight: 600; color: var(--blue); text-decoration: none; }
-    .dl a:hover { border-color: var(--blue); background: var(--sky); }
+      /* ----- Downloader ----- */
+    .dlr { display: grid; grid-template-columns: 340px 1fr; gap: 2rem; margin-top: 1.8rem; border: 1px solid var(--line); border-radius: var(--radius-l); padding: clamp(1rem, 3vw, 1.8rem); background: #fff; }
+    @media (max-width: 860px) { .dlr { grid-template-columns: 1fr; } }
+    .dl-label { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 .6rem; }
+    .dl-group + .dl-group { margin-top: 1.6rem; }
+    .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; background: var(--mist); border: 1px solid var(--line); border-radius: 12px; padding: 4px; }
+    .seg button { font: 600 .9rem var(--font); color: var(--muted); background: none; border: 0; border-radius: 9px; padding: .65em .4em; cursor: pointer; }
+    .seg button[aria-pressed="true"] { background: #fff; color: var(--navy); box-shadow: 0 1px 4px rgba(11,27,63,.12); }
+    .swatches { display: grid; gap: 6px; }
+    .swatches button { display: flex; align-items: center; gap: .8rem; text-align: left; font: 600 .92rem var(--font); color: var(--navy); background: #fff; border: 1.5px solid var(--line); border-radius: 12px; padding: .6rem .75rem; cursor: pointer; }
+    .swatches button:hover { border-color: #BFD0F5; }
+    .swatches button[aria-pressed="true"] { border-color: var(--blue); background: var(--mist); }
+    .swatches small { display: block; font-weight: 400; font-size: .78rem; color: var(--muted); }
+    .swatches i { flex: none; width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line); }
+    .chk { background: repeating-conic-gradient(#E5E9F2 0 25%, #fff 0 50%) 0 0 / 12px 12px; }
+    .chk.dark { background: repeating-conic-gradient(#2A3550 0 25%, #1B2540 0 50%) 0 0 / 12px 12px; }
+    .dl-stage { border-radius: 16px; border: 1px solid var(--line); min-height: 300px; display: grid; place-items: center; padding: 2rem; transition: background-color .25s; }
+    .dl-stage.t-dark { background: repeating-conic-gradient(#EEF1F7 0 25%, #fff 0 50%) 0 0 / 22px 22px; }
+    .dl-stage.t-light { background: repeating-conic-gradient(#2A3550 0 25%, #1F2A45 0 50%) 0 0 / 22px 22px; }
+    .dl-stage.solid { background: #F1F4FA; }
+    .dl-stage img { max-width: 100%; max-height: 260px; width: auto; height: auto; }
+    .dl-stage.solid img { box-shadow: 0 10px 30px rgba(11,27,63,.15); border-radius: 4px; }
+    .dl-stage[data-logo="stacked"] img { width: 280px; } .dl-stage[data-logo="horizontal"] img { width: 460px; } .dl-stage[data-logo="icon"] img { width: 180px; }
+    .dl-formats { display: flex; flex-wrap: wrap; gap: 8px; }
+    .dl-formats a { display: flex; flex-direction: column; min-width: 118px; padding: .7rem .9rem; border: 1.5px solid var(--line); border-radius: 12px; text-decoration: none; color: var(--navy); background: #fff; transition: border-color .15s, background .15s; }
+    .dl-formats a:hover { border-color: var(--blue); background: var(--mist); }
+    .dl-formats a b { font-size: .95rem; } .dl-formats a b::before { content: "↓ "; color: var(--blue); }
+    .dl-formats small { font-size: .76rem; color: var(--muted); }
+    .dl-extra { display: grid; grid-template-columns: 1fr 1.4fr; gap: 2rem; margin-top: 2rem; }
+    @media (max-width: 860px) { .dl-extra { grid-template-columns: 1fr; } }
+    .dl-extra h3 { margin: 0; }
   </style>
 </head>
 <body class="kit">
@@ -95,9 +123,55 @@
 
   <section id="downloads">
     <h2>Downloads</h2>
-    <p class="sub">Every logo in every format. <b>SVG</b> or <b>PDF</b> for print and anything that needs to scale. <b>PNG</b> (transparent background) for documents, slides and the web. <b>JPG</b> when a solid background is needed.</p>
-    <p style="margin-top:1.2rem"><a class="btn btn-primary" href="/brand/downloads/lr-solutions-brand-assets.zip" download>Download everything (.zip)</a></p>
-    <div class="tablewrap"><table class="voice dltable" style="margin-top:1.2rem"><tr><td><b>Stacked logo</b><br><span class="cap" style="margin:0">Primary</span></td><td class="dl"><a href="/brand/downloads/svg/logo-stacked.svg" download>SVG</a> <a href="/brand/downloads/png/logo-stacked-600px.png" download>PNG 600</a> <a href="/brand/downloads/png/logo-stacked-2400px.png" download>PNG 2400</a> <a href="/brand/downloads/jpg/logo-stacked-on-white.jpg" download>JPG</a> <a href="/brand/downloads/pdf/logo-stacked.pdf" download>PDF</a></td></tr><tr><td><b>Stacked logo, white</b><br><span class="cap" style="margin:0">For blue or dark backgrounds</span></td><td class="dl"><a href="/brand/downloads/svg/logo-stacked-white.svg" download>SVG</a> <a href="/brand/downloads/png/logo-stacked-white-600px.png" download>PNG 600</a> <a href="/brand/downloads/png/logo-stacked-white-2400px.png" download>PNG 2400</a> <a href="/brand/downloads/jpg/logo-stacked-on-blue.jpg" download>JPG on blue</a> <a href="/brand/downloads/pdf/logo-stacked-white.pdf" download>PDF</a></td></tr><tr><td><b>Horizontal logo</b><br><span class="cap" style="margin:0">Headers, email signatures</span></td><td class="dl"><a href="/brand/downloads/svg/logo.svg" download>SVG</a> <a href="/brand/downloads/png/logo-600px.png" download>PNG 600</a> <a href="/brand/downloads/png/logo-2400px.png" download>PNG 2400</a> <a href="/brand/downloads/jpg/logo-horizontal-on-white.jpg" download>JPG</a> <a href="/brand/downloads/pdf/logo.pdf" download>PDF</a></td></tr><tr><td><b>Horizontal logo, white</b><br><span class="cap" style="margin:0">For blue or dark backgrounds</span></td><td class="dl"><a href="/brand/downloads/svg/logo-white.svg" download>SVG</a> <a href="/brand/downloads/png/logo-white-600px.png" download>PNG 600</a> <a href="/brand/downloads/png/logo-white-2400px.png" download>PNG 2400</a> <a href="/brand/downloads/jpg/logo-horizontal-on-blue.jpg" download>JPG on blue</a> <a href="/brand/downloads/pdf/logo-white.pdf" download>PDF</a></td></tr><tr><td><b>Icon (&amp;), navy</b><br><span class="cap" style="margin:0">Favicon, apps, avatars</span></td><td class="dl"><a href="/brand/downloads/svg/mark.svg" download>SVG</a> <a href="/brand/downloads/png/mark-512px.png" download>PNG 512</a> <a href="/brand/downloads/png/mark-1024px.png" download>PNG 1024</a> <a href="/brand/downloads/pdf/mark.pdf" download>PDF</a></td></tr><tr><td><b>Icon, blue</b></td><td class="dl"><a href="/brand/downloads/svg/mark-blue.svg" download>SVG</a> <a href="/brand/downloads/png/mark-blue-512px.png" download>PNG 512</a> <a href="/brand/downloads/png/mark-blue-1024px.png" download>PNG 1024</a></td></tr><tr><td><b>Icon, white</b></td><td class="dl"><a href="/brand/downloads/svg/mark-white.svg" download>SVG</a> <a href="/brand/downloads/png/mark-white-512px.png" download>PNG 512</a> <a href="/brand/downloads/png/mark-white-1024px.png" download>PNG 1024</a></td></tr><tr><td><b>Icon, one colour</b><br><span class="cap" style="margin:0">Stamps, engraving, embroidery</span></td><td class="dl"><a href="/brand/downloads/svg/mark-mono.svg" download>SVG</a> <a href="/brand/downloads/png/mark-mono-512px.png" download>PNG 512</a> <a href="/brand/downloads/png/mark-mono-1024px.png" download>PNG 1024</a></td></tr><tr><td><b>Web &amp; social icons</b></td><td class="dl"><a href="/brand/downloads/icons/favicon.ico" download>favicon.ico</a> <a href="/brand/downloads/icons/apple-touch-icon.png" download>Apple touch 180</a> <a href="/brand/downloads/icons/icon-512.png" download>App icon 512</a> <a href="/brand/downloads/icons/social-avatar-1024.png" download>Social avatar 1024</a></td></tr></table></div>
+    <p class="sub">Pick a logo and a background, check the preview, then download the format you need. The logo colours adjust to the background automatically.</p>
+
+    <div class="dlr" id="dlr">
+      <div class="dl-controls">
+        <div class="dl-group">
+          <span class="dl-label">1 · Logo</span>
+          <div class="seg" role="group" aria-label="Logo">
+            <button type="button" data-logo="stacked" aria-pressed="true">Stacked</button>
+            <button type="button" data-logo="horizontal" aria-pressed="false">Horizontal</button>
+            <button type="button" data-logo="icon" aria-pressed="false">Icon (&amp;)</button>
+          </div>
+        </div>
+        <div class="dl-group">
+          <span class="dl-label">2 · Background</span>
+          <div class="swatches" role="group" aria-label="Background">
+            <button type="button" data-bg="transparent-dark" aria-pressed="true"><i class="chk"></i><span>Transparent<small>dark logo, for light backgrounds</small></span></button>
+            <button type="button" data-bg="transparent-light" aria-pressed="false"><i class="chk dark"></i><span>Transparent<small>white logo, for dark backgrounds &amp; photos</small></span></button>
+            <button type="button" data-bg="white" aria-pressed="false"><i style="background:#fff"></i><span>White<small>solid background</small></span></button>
+            <button type="button" data-bg="blue" aria-pressed="false"><i style="background:#1D4ED8"></i><span>LR Blue<small>solid background</small></span></button>
+            <button type="button" data-bg="navy" aria-pressed="false"><i style="background:#0B1B3F"></i><span>Navy<small>solid background</small></span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dl-main">
+        <div class="dl-stage" id="dl-stage"><img id="dl-preview" src="/brand/downloads/kit/lr-solutions-stacked-transparent-dark.svg" alt="Logo preview"></div>
+        <p class="dl-label" style="margin-top:1.2rem">3 · Download</p>
+        <div class="dl-formats" id="dl-formats"></div>
+        <p class="cap" id="dl-note"></p>
+      </div>
+    </div>
+
+    <div class="dl-extra">
+      <div>
+        <h3>Everything at once</h3>
+        <p class="cap" style="margin:.2rem 0 1rem">All logos × all backgrounds × all formats, plus icons (2.5 MB).</p>
+        <a class="btn btn-primary" href="/brand/downloads/lr-solutions-brand-assets.zip" download>Download all (.zip)</a>
+      </div>
+      <div>
+        <h3>Website &amp; app icons</h3>
+        <p class="cap" style="margin:.2rem 0 1rem">Ready-made icons for browsers, phones and social profiles.</p>
+        <div class="dl-formats">
+          <a href="/brand/downloads/icons/favicon.ico" download><b>favicon.ico</b><small>Browser tab</small></a>
+          <a href="/brand/downloads/icons/apple-touch-icon.png" download><b>Apple icon</b><small>180 × 180 PNG</small></a>
+          <a href="/brand/downloads/icons/app-icon-512.png" download><b>App icon</b><small>512 × 512 PNG</small></a>
+          <a href="/brand/downloads/icons/social-avatar-1024.png" download><b>Social avatar</b><small>1024 × 1024 PNG</small></a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section>
@@ -154,5 +228,46 @@
   </section>
 </main>
 <footer class="site-footer"><div class="wrap"><span>L&amp;R Solutions brand kit · v2</span><a href="/">← Back to site</a></div></footer>
+<script>
+(() => {
+  const root = document.getElementById('dlr'); if (!root) return;
+  const SIZES = { stacked: [800, 3000], horizontal: [1200, 3600], icon: [512, 2048] };
+  const NOTES = {
+    'transparent-dark': 'No background (transparent). Use on white or light surfaces: documents, slides, light websites.',
+    'transparent-light': 'No background (transparent), white logo. Use on dark surfaces, photos and coloured backgrounds.',
+    white: 'Solid white background with margin around the logo. JPG works anywhere, even where transparency isn\'t supported.',
+    blue: 'Solid LR Blue background with margin. Great for social posts and banners.',
+    navy: 'Solid navy background with margin. Great for dark slides and signage.',
+  };
+  const state = { logo: 'stacked', bg: 'transparent-dark' };
+  const stage = document.getElementById('dl-stage'), img = document.getElementById('dl-preview');
+  const formats = document.getElementById('dl-formats'), note = document.getElementById('dl-note');
+  const base = () => `/brand/downloads/kit/lr-solutions-${state.logo}-${state.bg}`;
+  const link = (href, title, sub) => `<a href="${href}" download><b>${title}</b><small>${sub}</small></a>`;
+  function render() {
+    const b = base(), [sm, lg] = SIZES[state.logo], solid = !state.bg.startsWith('transparent');
+    img.src = b + '.svg';
+    img.alt = `${state.logo} logo, ${state.bg.replace('-', ' ')} background`;
+    stage.className = 'dl-stage ' + (solid ? 'solid' : state.bg === 'transparent-dark' ? 't-dark' : 't-light');
+    stage.dataset.logo = state.logo;
+    formats.innerHTML = [
+      link(b + '.svg', 'SVG', 'Vector, any size'),
+      link(`${b}-${sm}px.png`, 'PNG', `${sm}px wide${solid ? '' : ', transparent'}`),
+      link(`${b}-${lg}px.png`, 'PNG large', `${lg}px wide${solid ? '' : ', transparent'}`),
+      solid ? link(b + '.jpg', 'JPG', `${lg}px wide`) : '',
+      link(b + '.pdf', 'PDF', 'Vector, for print'),
+    ].join('');
+    note.textContent = NOTES[state.bg] + (solid ? '' : ' (JPG can\'t be transparent, so use PNG.)');
+    root.querySelectorAll('[data-logo]').forEach(x => x.setAttribute('aria-pressed', x.dataset.logo === state.logo));
+    root.querySelectorAll('[data-bg]').forEach(x => x.setAttribute('aria-pressed', x.dataset.bg === state.bg));
+  }
+  root.addEventListener('click', e => {
+    const t = e.target.closest('[data-logo],[data-bg]'); if (!t) return;
+    if (t.dataset.logo) state.logo = t.dataset.logo; else state.bg = t.dataset.bg;
+    render();
+  });
+  render();
+})();
+</script>
 </body>
 </html>
