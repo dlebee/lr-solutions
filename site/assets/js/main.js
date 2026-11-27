@@ -118,6 +118,7 @@
       });
       const out = await res.json().catch(() => ({}));
       if (!res.ok || !out.ok) throw new Error(out.error || 'Something went wrong.');
+      if (window.gtag) gtag('event', 'generate_lead', { form_id: 'contact', enquiry_type: data.type || '' });
       form.reset();
       setStatus("Thanks, your message is on its way. We'll reply within one business day.", 'ok');
     } catch (err) {
