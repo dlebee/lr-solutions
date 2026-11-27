@@ -1,5 +1,23 @@
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
+  const FR = document.documentElement.lang.startsWith('fr');
+  const L = FR ? {
+    channels: ['Salle · Table 4', 'En ligne · Cueillette 18 h 30', 'Appli de livraison', 'Borne · Pour emporter', 'Salle · Table 9', 'En ligne · Livraison', 'Traiteur · 40 pers.'],
+    kds: '→ Cuisine', now: '6 sites · à l’instant', ago: s => `6 sites · il y a ${s} s`,
+    invalid: 'Veuillez indiquer votre nom, un courriel valide et un message.',
+    human: 'Veuillez compléter la vérification ci-dessus.',
+    sending: 'Envoi en cours…',
+    ok: 'Merci, votre message est en route. Nous répondrons en un jour ouvrable.',
+    fail: 'Nous n’avons pas pu envoyer votre message.', retry: ' Vous pouvez réessayer dans un instant.',
+  } : {
+    channels: ['Dine-in · Table 4', 'Online · Pickup 6:30', 'Delivery app', 'Kiosk · To go', 'Dine-in · Table 9', 'Online · Delivery', 'Catering · 40 pax'],
+    kds: '→ KDS', now: '6 sites · just now', ago: s => `6 sites · ${s}s ago`,
+    invalid: 'Please add your name, a valid email and a message.',
+    human: 'Please complete the human check above.',
+    sending: 'Sending…',
+    ok: "Thanks, your message is on its way. We'll reply within one business day.",
+    fail: 'Something went wrong.', retry: ' You can try again in a moment.',
+  };
 
   // Year
   const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
@@ -77,19 +95,19 @@
   if (hero) {
     requestAnimationFrame(() => setTimeout(() => hero.classList.add('ready'), 150));
     const list = $('#tickets'), sync = $('#sync-time');
-    const channels = ['Dine-in · Table 4', 'Online · Pickup 6:30', 'Delivery app', 'Kiosk · To go', 'Dine-in · Table 9', 'Online · Delivery', 'Catering · 40 pax'];
+    const channels = L.channels;
     let n = 1042, secs = 0, ci = 0;
     if (list && !reduce) {
       setInterval(() => {
         if (document.hidden) return;
         const li = document.createElement('li');
         li.className = 'new';
-        li.innerHTML = `<b>#${++n}</b><span>${channels[ci++ % channels.length]}</span><em>→ KDS</em>`;
+        li.innerHTML = `<b>#${++n}</b><span>${channels[ci++ % channels.length]}</span><em>${L.kds}</em>`;
         list.prepend(li);
         while (list.children.length > 4) list.lastElementChild.remove();
-        secs = 0; if (sync) sync.textContent = '6 sites · just now';
+        secs = 0; if (sync) sync.textContent = L.now;
       }, 3200);
-      setInterval(() => { secs++; if (sync && secs > 1) sync.textContent = `6 sites · ${secs}s ago`; }, 1000);
+      setInterval(() => { secs++; if (sync && secs > 1) sync.textContent = L.ago(secs); }, 1000);
     }
   }
 
@@ -103,12 +121,12 @@
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form));
     if (!data.name?.trim() || !data.message?.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || '')) {
-      setStatus('Please add your name, a valid email and a message.', 'err'); return;
+      setStatus(L.invalid, 'err'); return;
     }
     const token = data['cf-turnstile-response'];
-    if (!token) { setStatus('Please complete the human check above.', 'err'); return; }
+    if (!token) { setStatus(L.human, 'err'); return; }
 
-    btn.disabled = true; setStatus('Sending…');
+    btn.disabled = true; setStatus(L.sending);
     try {
       const endpoint = location.hostname === 'localhost' ? 'http://localhost:8787/contact' : form.dataset.endpoint;
       const res = await fetch(endpoint, {
@@ -117,12 +135,12 @@
         body: JSON.stringify(data),
       });
       const out = await res.json().catch(() => ({}));
-      if (!res.ok || !out.ok) throw new Error(out.error || 'Something went wrong.');
+      if (!res.ok || !out.ok) throw new Error((!FR && out.error) || L.fail);
       if (window.gtag) gtag('event', 'generate_lead', { form_id: 'contact', enquiry_type: data.type || '' });
       form.reset();
-      setStatus("Thanks, your message is on its way. We'll reply within one business day.", 'ok');
+      setStatus(L.ok, 'ok');
     } catch (err) {
-      setStatus(err.message + ' You can try again in a moment.', 'err');
+      setStatus((FR ? L.fail : err.message) + L.retry, 'err');
     } finally {
       btn.disabled = false;
       if (window.turnstile) window.turnstile.reset();

@@ -1,24 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-CA">
 <head>
   <meta charset="utf-8">
-  <!-- Google Analytics (GA4, L&R Solutions account) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2M2Y33Q43E"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2M2Y33Q43E');
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>L&amp;R Solutions — Sales &amp; central kitchen technology</title>
   <meta name="description" content="L&amp;R Solutions designs, integrates and supports sales systems and central kitchen technology for food businesses, and builds custom software through a trusted partner network.">
   <link rel="canonical" href="https://lr-solutions.com/">
+  <link rel="alternate" hreflang="en-CA" href="https://lr-solutions.com/">
+  <link rel="alternate" hreflang="fr-CA" href="https://lr-solutions.com/fr/">
+  <link rel="alternate" hreflang="x-default" href="https://lr-solutions.com/">
   <meta name="theme-color" content="#1D4ED8">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:locale:alternate" content="fr_CA">
   <meta property="og:url" content="https://lr-solutions.com/">
   <meta property="og:title" content="L&amp;R Solutions — Your kitchen, connected.">
   <meta property="og:description" content="Sales systems, central kitchen technology and custom software for food businesses.">
@@ -26,6 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/consent.js" defer></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfessionalService","name":"L&R Solutions","url":"https://lr-solutions.com/","logo":"https://lr-solutions.com/assets/img/mark.svg","description":"Sales systems, central kitchen technology and custom software for food businesses."}
   </script>
@@ -45,6 +43,7 @@
       <li><a href="#systems">Systems</a></li>
       <li><a href="#custom">Custom software</a></li>
       <li><a href="#how">How we work</a></li>
+      <li><a class="lang-switch" href="/fr/" lang="fr" hreflang="fr" aria-label="Français">FR</a></li>
       <li><a class="btn btn-primary" href="#contact">Contact us</a></li>
     </ul>
   </div>
@@ -214,6 +213,7 @@
             <option>Integration &amp; data</option>
             <option>Custom software</option>
             <option>Not sure yet</option>
+            <option>Privacy request</option>
           </select>
         </div>
         <div class="field full"><label for="f-msg">How can we help?</label><textarea id="f-msg" name="message" required maxlength="5000"></textarea></div>
@@ -232,6 +232,11 @@
 <footer class="site-footer">
   <div class="wrap">
     <a class="brand" href="#top"><img src="/assets/img/logo.svg" alt="L&amp;R Solutions" class="logo" style="height:28px"></a>
+    <nav class="footer-links" aria-label="Legal">
+      <a href="/privacy/">Privacy</a>
+      <a href="#" data-consent-open>Cookie preferences</a>
+      <a href="/fr/" lang="fr" hreflang="fr">Français</a>
+    </nav>
     <span>© <span id="year">2026</span> L&amp;R Solutions</span>
   </div>
 </footer>

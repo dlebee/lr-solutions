@@ -2,14 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Google Analytics (GA4, L&R Solutions account) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2M2Y33Q43E"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2M2Y33Q43E');
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>L&amp;R Solutions Brand Kit</title>
@@ -18,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/consent.js" defer></script>
   <style>
     .cover { background: var(--blue); color: #fff; padding: clamp(56px, 9vw, 110px) 0; }
     .cover h1 { color: #fff; margin-bottom: .2em; }
@@ -235,7 +228,7 @@
     </div>
   </section>
 </main>
-<footer class="site-footer"><div class="wrap"><span>L&amp;R Solutions brand kit · v2</span><a href="/">← Back to site</a></div></footer>
+<footer class="site-footer"><div class="wrap"><span>L&amp;R Solutions brand kit · v2</span><span><a href="#" data-consent-open>Cookie preferences</a> · <a href="/privacy/">Privacy</a> · <a href="/">← Back to site</a></span></div></footer>
 <script>
 (() => {
   const root = document.getElementById('dlr'); if (!root) return;

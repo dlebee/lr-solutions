@@ -5,6 +5,8 @@ Static one-page website on GitHub Pages. The contact-form API lives in a separat
 ```
 site/            → the website (deployed to GitHub Pages)
   index.html       single-page site
+  fr/              French version (/fr/) + privacy policy (/fr/confidentialite/)
+  privacy/         English privacy policy
   brand/           brand kit page (lr-solutions.com/brand/, not indexed)
   assets/          css (tokens.css = brand tokens), js, logo SVGs
   CNAME            lr-solutions.com
@@ -51,3 +53,9 @@ python3 -m http.server 8080 --directory site  # site on :8080 (form auto-targets
 - Only accepts requests from `ALLOWED_ORIGINS`
 - Field length limits, plain-text email only (no HTML injection), 20 KB body cap
 - Reply-To is set to the visitor, so hitting Reply in your inbox answers them directly
+
+## Privacy (Quebec Law 25) and languages
+- The site is bilingual: English at `/`, French at `/fr/` (linked both ways, with `hreflang`). Keep both pages in sync when the copy changes; `assets/js/main.js` holds the FR/EN strings for scripted text.
+- Google Analytics (GA4 `G-2M2Y33Q43E`, separate "L&R Solutions" account) is **opt-in**: `assets/js/consent.js` only loads it after the visitor clicks Accept. Choice kept 12 months; footer "Cookie preferences" reopens the banner. Google signals and ad personalization are off, and data retention is 2 months.
+- Privacy policies: `/privacy/` and `/fr/confidentialite/`. Privacy requests come in through the contact form ("Privacy request").
+
